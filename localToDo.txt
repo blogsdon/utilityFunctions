@@ -1,0 +1,2 @@
+1) add documentation to all functions
+2)
