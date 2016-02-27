@@ -1,4 +1,4 @@
-fastlmbic <- function(y,x=NULL){
+fastlmbic <- function(y,x=NULL,correction=1){
   require(dplyr)
   if(!is.null(x)){
     X <- x %>% as.matrix
@@ -13,5 +13,5 @@ fastlmbic <- function(y,x=NULL){
   betahat <- Xhat%*%y;
   sig <- (((y-X%*%betahat)^2) %>% mean);
   #print('In cleaning')
-  return(n1*(log(sig)+1+log(2*pi))+(ncol(X)+1)*log(n1));
+  return(n1*(log(sig)+1+log(2*pi))+(ncol(X)+1)*log(n1*correction));
 }
