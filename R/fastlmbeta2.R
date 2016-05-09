@@ -1,4 +1,4 @@
-fastlmbeta <- function(y,x){
+fastlmbeta2 <- function(y,x,n2){
   library(dplyr)
   X <- x %>% as.matrix
   n1 <- X %>% nrow
@@ -6,9 +6,10 @@ fastlmbeta <- function(y,x){
   ginv <- t(X)%*%X %>% solve();
   Xhat <- ginv%*%t(X);
   betahat <- Xhat%*%y;
-  n1 <- colnames(x)
+  #n1 <- colnames(x)
   betahat <- c(betahat)
-  names(betahat) <- c('intercept',n1)
+  #print(n2)
+  names(betahat) <- c('intercept',n2)
   #print('In cleaning')
   return(betahat);
 }
