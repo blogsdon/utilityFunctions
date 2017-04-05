@@ -6,6 +6,9 @@ fastlmbeta <- function(y,x){
   ginv <- t(X)%*%X %>% solve();
   Xhat <- ginv%*%t(X);
   betahat <- Xhat%*%y;
+  n1 <- colnames(x)
+  betahat <- c(betahat)
+  names(betahat) <- c('intercept',n1)
   #print('In cleaning')
-  return(betahat[-1]);
+  return(betahat);
 }
