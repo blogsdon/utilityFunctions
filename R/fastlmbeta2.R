@@ -1,5 +1,6 @@
-fastlmbeta2 <- function(y,x,n2){
+fastlmbeta2 <- function(y,x,colId){
   library(dplyr)
+  colId <- c('intercept',colId)
   X <- x %>% as.matrix
   n1 <- X %>% nrow
   X <- (1 %>% rep(n1)) %>% cbind(X)
@@ -9,7 +10,8 @@ fastlmbeta2 <- function(y,x,n2){
   #n1 <- colnames(x)
   betahat <- c(betahat)
   #print(n2)
-  names(betahat) <- c('intercept',n2)
+  #names(betahat) <- c('intercept',n2)
   #print('In cleaning')
+  names(betahat) <- colId
   return(betahat);
 }
