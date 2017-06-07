@@ -6,5 +6,5 @@ fisherWrapperOR <- function(moduleGenes,annotationGenes,allGenes){
   bar <- matrix(c(a00,a10,a01,a11),2,2)
   #print(bar)
   foo <- fisher.test(bar,alternative='greater')
-  return(foo$estimate)
+  return(as.numeric(foo$estimate)[1])
 }
