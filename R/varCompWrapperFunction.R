@@ -1,7 +1,7 @@
 varCompWrapperFunction <- function(outcome,fixed,randomFeatures){
   library(varComp)
   ####features have to be in observations as rows and features as column format
-  kernel <- cor(t(randomFeatures),
+  kernel <- cor(t(randomfeatures),
                 use = 'pairwise.complete.obs')
   alternativeModel <- varComp::varComp(outcome~fixed,
                                        varcov=kernel)
