@@ -1,4 +1,4 @@
-pairwiseMatrixOfEnrichments(key,value){
+pairwiseMatrixOfEnrichments = function(key,value){
   #get unique keys
   unique_keys <- unique(key)
   unique_values <- unique(value)
@@ -6,7 +6,8 @@ pairwiseMatrixOfEnrichments(key,value){
   #df <- data.frame(keys=key,values=value,stringsAsFactors=F)
 
   #listify
-  dfList <- utilityFunctions::listify(unique_keys,
+  dfList <- lapply(unique_keys,
+                   utilityFunctions::listify,
                                       value,
                                       key)
   names(dfList) <- unique_keys
@@ -23,5 +24,7 @@ pairwiseMatrixOfEnrichments(key,value){
     utilityFunctions::outerSapplyParallel(dfList,
                                           dfList,
                                           unique_values)
+  diag(res$or) <- 0
+
   return(res)
 }
