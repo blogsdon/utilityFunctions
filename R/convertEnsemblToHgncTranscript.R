@@ -1,0 +1,13 @@
+convertEnsemblToHgncTranscript <- function(ensemblIds){
+
+    library(biomaRt)
+    ensembl=biomaRt::useMart('ENSEMBL_MART_ENSEMBL',
+                           dataset = 'hsapiens_gene_ensembl',
+                           host='uswest.ensembl.org')
+
+    genes<-biomaRt::getBM(attributes = c('ensembl_transcript_id','external_gene_name'),
+               filters='ensembl_transcript_id',
+               values=ensemblIds,
+               mart=ensembl)
+    return(genes)
+}
